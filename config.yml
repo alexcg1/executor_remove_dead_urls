@@ -1,0 +1,4 @@
+jtype: RemoveDeadURLs
+metas:
+  py_modules:
+    - executor.py

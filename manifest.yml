@@ -1,0 +1,5 @@
+manifest_version: 1
+name: RemoveDeadURLs
+description: "Checks specified tags for dead URLs and removes Documents accordingly"
+url: "https://github.com/alexcg1/executor_remove_dead_urls"
+keywords: network, utility
