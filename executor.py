@@ -3,7 +3,7 @@ import requests as rq
 
 
 class RemoveDeadURLs(Executor):
-    def __init__(self, tag: str, **kwargs):
+    def __init__(self, tag: str = "url", **kwargs):
         super().__init__(**kwargs)
         self.tag = tag
 
