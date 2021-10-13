@@ -2,6 +2,13 @@
 
 Checks specified tags for dead URLs and removes Documents accordingly.
 
+| Scenario             | Outcome                  |
+| ---                  | ---                      |
+| `tag` is valid URL   | Don't touch the Document |
+| `tag` is invalid URL | Remove Document          |
+| `tag` doesn't exist  | Don't touch the Document |
+| `tag` is empty       | Don't touch the Document |
+
 ## Usage
 
 Pass the name of the tag that stores the URL to check.
