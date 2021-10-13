@@ -4,3 +4,7 @@ with:
 metas:
   py_modules:
     - executor.py
+  name: remove_dead_urls
+  description: "Remove Documents that have an invalid or unreachable URL as their url tag"
+requests:
+  index: RemoveDeadURLs
