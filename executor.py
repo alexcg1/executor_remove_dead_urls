@@ -1,4 +1,4 @@
-from jina import Executor, DocumentArray, requests, Flow, Document
+from jina import Executor, DocumentArray, requests
 import requests as rq
 
 
@@ -9,12 +9,12 @@ class RemoveDeadURLs(Executor):
 
     """Checks specified tags for dead URLs and removes Documents accordingly"""
 
-    @requests
-    def remove_dead_urls(self, docs: DocumentArray, tag: str = "url", **kwargs):
+    @requests(on="/index")
+    def remove_dead_urls(self, docs: DocumentArray, **kwargs):
         dead_links = []
         for idx, doc in enumerate(docs):
             try:
-                response = rq.get(doc.tags[tag])
+                response = rq.get(doc.tags[self.tag])
                 assert response.status_code == 200
             except:
                 dead_links.append(idx)

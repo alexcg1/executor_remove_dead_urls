@@ -1,4 +1,6 @@
 jtype: RemoveDeadURLs
+with:
+  tag: url
 metas:
   py_modules:
     - executor.py
