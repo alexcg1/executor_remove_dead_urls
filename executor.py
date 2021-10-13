@@ -15,11 +15,13 @@ class RemoveDeadURLs(Executor):
         tag = parameters.get("tag", self.tag)
         dead_links = []
         for idx, doc in enumerate(docs):
-            try:
-                response = rq.get(doc.tags[tag])
-                assert response.status_code == 200
-            except:
-                dead_links.append(idx)
+            if tag in doc.tags.keys(): # Check tag exists
+                if doc.tags[tag]:
+                    try:
+                        response = rq.get(doc.tags[tag])
+                        assert response.status_code == 200
+                    except:
+                        dead_links.append(idx)
 
         dead_links.reverse()
 
