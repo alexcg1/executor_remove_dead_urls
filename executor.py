@@ -1,5 +1,6 @@
 from jina import Executor, DocumentArray, requests
 import requests as rq
+from typing import Dict
 
 
 class RemoveDeadURLs(Executor):
@@ -10,11 +11,12 @@ class RemoveDeadURLs(Executor):
     """Checks specified tags for dead URLs and removes Documents accordingly"""
 
     @requests(on="/index")
-    def remove_dead_urls(self, docs: DocumentArray, **kwargs):
+    def remove_dead_urls(self, docs: DocumentArray = None, parameters: Dict = {}, **kwargs):
+        tag = parameters.get("tag", self.tag)
         dead_links = []
         for idx, doc in enumerate(docs):
             try:
-                response = rq.get(doc.tags[self.tag])
+                response = rq.get(doc.tags[tag])
                 assert response.status_code == 200
             except:
                 dead_links.append(idx)

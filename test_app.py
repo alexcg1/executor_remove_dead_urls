@@ -1,8 +1,8 @@
 from jina import Flow, Document, DocumentArray
 from executor import RemoveDeadURLs
 
-# rm_dead_url_executor = RemoveDeadURLs
-rm_dead_url_executor = "jinahub+docker://RemoveDeadURLs"
+rm_dead_url_executor = RemoveDeadURLs
+# rm_dead_url_executor = "jinahub+docker://RemoveDeadURLs"
 
 docs = DocumentArray(
     [
@@ -30,5 +30,4 @@ query_doc = Document(text="foo")
 with flow:
     flow.index(inputs=docs, show_progress=True)
     results = flow.search(inputs=[query_doc], return_results=True)
-
-print(results)
+    print(results)
