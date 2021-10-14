@@ -1,7 +1,7 @@
 from jina import Flow, Document, DocumentArray
 from executor import RemoveDeadURLs
 
-# rm_dead_url_executor = RemoveDeadURLs
+rm_dead_url_executor = RemoveDeadURLs
 rm_dead_url_executor = "jinahub+docker://RemoveDeadURLs"
 
 docs = DocumentArray(
@@ -22,6 +22,7 @@ flow = (
         uses=rm_dead_url_executor,
         uses_with={"tag": "url"},
         name="remove_dead_urls",
+        force=True
     )
     .add(uses="jinahub+docker://SpacyTextEncoder", name="encoder")
     .add(uses="jinahub+docker://SimpleIndexer", name="indexer")

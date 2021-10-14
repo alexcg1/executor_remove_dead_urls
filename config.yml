@@ -7,4 +7,4 @@ metas:
   name: remove_dead_urls
   description: "Remove Documents that have an invalid or unreachable URL as their url tag"
 requests:
-  index: RemoveDeadURLs
+  index: remove_dead_urls
